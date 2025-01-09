@@ -4,7 +4,7 @@ from google.oauth2.service_account import Credentials
 import gspread
 from streamlit_option_menu import option_menu
 import plotly.graph_objects as go
-from sheet_helper import get_googlesheet_client, load_sheet, download_sheet
+from sheet_helper import get_googlesheet_client, get_googlesheet_client1, load_sheet, download_sheet
 from sheet_ids import CREDENTIALS_SPREADSHEET_ID, DATABASE_ID
 
 # Função para autenticar o usuário
@@ -45,7 +45,7 @@ def main():
         senha = st.text_input("Senha", type="password")
 
         if st.button("Entrar"):
-            client = get_googlesheet_client()
+            client = get_googlesheet_client1()
 
             # Carregar dados da planilha
             users_data = load_sheet(
