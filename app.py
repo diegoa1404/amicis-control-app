@@ -31,7 +31,7 @@ def main():
 
         st.image(r"images/logo.png", width=300)
 
-        
+        #DIEGUERA
         # Tela de Login
         st.title("Amicis Control")
         
