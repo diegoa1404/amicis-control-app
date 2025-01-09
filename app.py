@@ -85,7 +85,7 @@ def main():
 
         # Criando o menu lateral
         with st.sidebar:
-            st.image(r"images\logo.png", width=300)
+            st.image(r"images/logo.png", width=300)
             selected = option_menu(
                 "Menu",
                 ["Dashboard", "Resultado Mês", "Resultado por Ativo",
