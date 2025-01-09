@@ -6,19 +6,13 @@ import streamlit as st
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
 CREDENTIALS_FILE = "data\credentials.txt"
 
-
-def get_googlesheet_client():
-    credentials = Credentials.from_service_account_file(CREDENTIALS_FILE, scopes=SCOPES)
-    return gspread.authorize(credentials)
-
-
-def get_googlesheet_client1():
-    credentials = Credentials.from_service_account_info( st.secrets["gcp_service_account"] ) 
+def get_googlesheet_client1(): # Load credentials from Streamlit secrets 
+    credentials = Credentials.from_service_account_info( st.secrets["gcp_service_account"], scopes=['https://www.googleapis.com/auth/spreadsheets'] ) 
     client = gspread.authorize(credentials) 
     return client
 
 def load_sheet(sheet_id):
-    return get_googlesheet_client().open_by_key(sheet_id)
+    return get_googlesheet_client1().open_by_key(sheet_id)
 
 
 def download_sheet(sheet_id):
