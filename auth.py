@@ -2,7 +2,7 @@ from google.oauth2.service_account import Credentials
 import gspread
 
 SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
-CREDENTIALS_FILE = r"data\credentials.json"
+CREDENTIALS_FILE = "data\credentials.txt"
 
 
 def get_googlesheet_client():
