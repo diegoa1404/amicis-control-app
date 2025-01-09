@@ -4,7 +4,8 @@ from google.oauth2.service_account import Credentials
 import gspread
 from streamlit_option_menu import option_menu
 import plotly.graph_objects as go
-from auth import get_googlesheet_client
+from sheet_helper import get_googlesheet_client, load_sheet, download_sheet
+from sheet_ids import CREDENTIALS_SPREADSHEET_ID, DATABASE_ID
 
 # Função para autenticar o usuário
 def autenticar_usuario(login, senha, users_data):
@@ -42,9 +43,7 @@ def main():
             client = get_googlesheet_client()
             
             # Carregar dados da planilha
-            SPREADSHEET_ID = "1dja8B_g4XSSStU-h0p7Y0ffmCQZnWkeO8XpYdMv8l2A"  # ID da sua planilha
-            sheet = client.open_by_key(SPREADSHEET_ID).sheet1  # Certifique-se que o nome da aba está correto
-            users_data = sheet.get_all_records()
+            users_data = load_sheet(CREDENTIALS_SPREADSHEET_ID).sheet1.get_all_records()
     
             # Verificar login e senha
             usuario = autenticar_usuario(login, senha, users_data)
@@ -64,8 +63,10 @@ def main():
         st.title("Amicis Control - Controle de Operações")
 
         # Carregar os dados do arquivo Excel
-        file_path = r"data/database.xlsx"
-        df = pd.read_excel(file_path, sheet_name="Base")
+         # Carregar os dados do arquivo Excel
+        # file_path = r"data/database.xlsx"
+        # df = pd.read_excel(file_path, sheet_name="Base")
+        df = download_sheet(DATABASE_ID)
 
         # Verificar se há uma coluna 'Ano'; caso contrário, criar com base na data
         if 'Ano' not in df.columns:
