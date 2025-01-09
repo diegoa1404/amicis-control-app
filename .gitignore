@@ -1,1 +1,3 @@
 data/credentials.txt
+data/credentials.json
+__pycache__/*
