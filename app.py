@@ -15,7 +15,7 @@ def autenticar_usuario(login, senha, users_data):
             else:
                 return None  # Se o status for 'Inativo', não permite o login
     return None
-
+#teste
 # Função principal
 def main():
     # Verificar se o usuário está logado (usando session_state)
@@ -31,7 +31,7 @@ def main():
 
         st.image(r"images/logo.png", width=300)
 
-        
+        #DIEGUERA
         # Tela de Login
         st.title("Amicis Control")
         
